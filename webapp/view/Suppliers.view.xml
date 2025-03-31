@@ -1,0 +1,14 @@
+<mvc:View controllerName="com.agarangu.supplierssapfiori.controller.Suppliers"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.ui.table"
+    xmlns:m="sap.m"
+    xmlns:c="sap.ui.core"
+    xmlns:l="sap.ui.layout"
+    >
+    <m:Page id="page" title="{i18n>mainTitle}" showHeader="false">
+        <c:Fragment
+            fragmentName="com.agarangu.supplierssapfiori.view.fragments.SuppliersTable"
+            type="XML"
+        />
+    </m:Page>
+</mvc:View>

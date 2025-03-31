@@ -1,0 +1,80 @@
+<c:FragmentDefinition
+    xmlns="sap.ui.table"
+    xmlns:c="sap.ui.core"
+    xmlns:m="sap.m"
+>
+    
+    <Table
+        id="table"
+        selectionMode="None"
+        rows="{/Suppliers}"
+        rowMode="Auto"
+    >
+        <extension>
+            <m:OverflowToolbar >
+                <m:Title id="title" text="Products"/>
+                <m:ToolbarSpacer/>
+                <m:Button
+                    icon="sap-icon://clear-filter"
+                    tooltip="{i18n>clearFiltersTooltip}"
+                    press="clearAllFilters"/>
+                <m:ToolbarSeparator/>
+                <m:SearchField
+                    placeholder="{i18n>filterPlaceholder}"
+                    value="{ui>/globalFilter}"
+                    search="filterGlobally"
+                    width="15rem"/>
+            </m:OverflowToolbar>
+        </extension>
+        <columns>
+            <Column
+                filterProperty="SupplierID"
+                filterType="sap.ui.model.type.Integer"
+				width="4rem"
+            >
+                <multiLabels>
+                    <m:Label text="{i18n>SupplierID}"/>
+                    <c:Icon src="sap-icon://add-filter"></c:Icon>
+                </multiLabels>
+                
+                <template>
+                    <m:Label text="{
+                        path: 'SupplierID',
+                        type: 'sap.ui.model.type.Integer'
+                    }" />
+                </template>
+            </Column>
+            <Column
+                filterProperty="CompanyName"
+            >
+                <m:Label text="{i18n>CompanyName}"/>
+                <template>
+                    <m:Text text="{CompanyName}" wrapping="false" />
+                </template>
+            </Column>
+            <Column>
+                <m:Label text="{i18n>ContactFull}"/>
+                <template>                    
+                    <m:Text text="{ContactName} - {ContactTitle} " wrapping="false" />
+                </template>
+            </Column>
+            <Column
+				width="9rem"
+            >
+                <m:Label text="{i18n>Phone}"/>
+                <template>                    
+                    <m:Text text="{Phone}" wrapping="false" />
+                </template>
+            </Column>
+            <Column
+                filterProperty="Country"
+				width="6rem"
+            >
+                <m:Label text="{i18n>Country}"/>
+                <template>                    
+                    <m:Text text="{Country}" wrapping="false" />
+                </template>
+            </Column>
+        </columns>
+    </Table>
+</c:FragmentDefinition>
