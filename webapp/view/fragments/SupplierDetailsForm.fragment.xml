@@ -7,7 +7,7 @@
 		<f:SimpleForm id="supplierDetailsForm"
 			editable="false"
 			layout="ResponsiveGridLayout"
-			title="Address"
+			title="{i18n>SupplierDetailsTitle}"
 			labelSpanXL="3"
 			labelSpanL="3"
 			labelSpanM="3"

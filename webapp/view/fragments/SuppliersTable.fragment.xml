@@ -13,7 +13,7 @@
     >
         <extension>
             <m:OverflowToolbar >
-                <m:Title id="title" text="Products"/>
+                <m:Title id="title" text="{i18n>suppliersTableTitle}"/>
                 <m:ToolbarSpacer/>
                 <m:Button
                     icon="sap-icon://clear-filter"
@@ -24,25 +24,23 @@
                     placeholder="{i18n>filterPlaceholder}"
                     value="{ui>/globalFilter}"
                     search="filterGlobally"
-                    width="15rem"/>
+                    width="16rem"/>
             </m:OverflowToolbar>
         </extension>
         <rowActionTemplate>
             <RowAction>
-                <RowActionItem type="Navigation" press="onCellClicked" />
+                <RowActionItem text="{i18n>goToSupplierDetailsTooltip}" type="Navigation" press="onGoToSupplierDetails" />
             </RowAction>
         </rowActionTemplate>
         <columns>
             <Column
                 filterProperty="SupplierID"
                 filterType="sap.ui.model.type.Integer"
+                sortProperty="SupplierID"
 				width="4rem"
             >
-                <multiLabels>
-                    <m:Label text="{i18n>SupplierID}"/>
-                    <c:Icon src="sap-icon://add-filter"></c:Icon>
-                </multiLabels>
-                
+                <m:Label text="{i18n>SupplierID}"/>
+
                 <template>
                     <m:Label text="{
                         path: 'SupplierID',
@@ -52,19 +50,21 @@
             </Column>
             <Column
                 filterProperty="CompanyName"
+                sortProperty="CompanyName"
             >
                 <m:Label text="{i18n>CompanyName}"/>
                 <template>
                     <m:Text text="{CompanyName}" wrapping="false" />
                 </template>
             </Column>
-            <Column>
+            <Column sortProperty="ContactName">
                 <m:Label text="{i18n>ContactFull}"/>
                 <template>                    
                     <m:Text text="{ContactName} - {ContactTitle} " wrapping="false" />
                 </template>
             </Column>
             <Column
+                sortProperty="Phone"
 				width="9rem"
             >
                 <m:Label text="{i18n>Phone}"/>
@@ -74,6 +74,7 @@
             </Column>
             <Column
                 filterProperty="Country"
+                sortProperty="Country"
 				width="6rem"
             >
                 <m:Label text="{i18n>Country}"/>

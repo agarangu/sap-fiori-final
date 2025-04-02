@@ -1,0 +1,57 @@
+<c:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:c="sap.ui.core"
+>
+    <Dialog
+        id="mainDialog"
+        title="{i18n>ProductDialogTitle}"
+        contentWidth="40vw"
+		contentHeight="40vh"
+    >
+        <content>
+            <VBox class="sapUiSmallMargin" id="formContainer" >
+                <f:SimpleForm
+                    id="productDetailsForm"
+                    editable="false"
+					layout="ColumnLayout"
+					columnsM="2"
+					columnsL="2"
+					columnsXL="2"
+                >
+                    <f:content>
+                        <Label text="{i18n>ProductID}" />
+                        <Text text="{ProductID}" />
+                        <Label text="{i18n>ProductName}" />
+                        <Text text="{ProductName}" />
+                        <Label text="{i18n>QuantityPerUnit}" />
+                        <Text text="{QuantityPerUnit}" />
+                        <Label text="{i18n>UnitPrice}" />
+                        <Text text="{UnitPrice}" />
+                        <Label text="{i18n>UnitsInStock}" />
+                        <Text text="{UnitsInStock}" />
+                        <Label text="{i18n>UnitsOnOrder}" />
+                        <Text text="{UnitsOnOrder}" />
+                        <Label text="{i18n>ReorderLevel}" />
+                        <Text text="{ReorderLevel}" />
+                        <Label text="{i18n>Discontinued}" />
+                        <Text text="{Discontinued}" />
+                        <Label text="{i18n>CategoryName}" />
+                        <Text text="{Category/CategoryName}" />
+                    </f:content>
+                </f:SimpleForm>
+            </VBox>
+        </content>
+        <footer>
+			<Toolbar>
+				<content>
+					<ToolbarSpacer />
+					<Button type="Default"
+							text="{i18n>DialogCloseButton}"
+							press="._closeDialog" />
+				</content>
+			</Toolbar>
+		</footer>
+    </Dialog>
+</c:FragmentDefinition>

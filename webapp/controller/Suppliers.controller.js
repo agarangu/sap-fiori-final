@@ -26,10 +26,17 @@ sap.ui.define([
 			const sQuery = String(oEvent.getParameter("query"));
 			this._oGlobalFilter = null;
 			if (sQuery) {
-				this._oGlobalFilter = new Filter([
-					new Filter("CompanyName", FilterOperator.Contains, sQuery),
-					new Filter("Country", FilterOperator.Contains, sQuery),
-				], false);
+				const nQuery = parseInt(sQuery);
+				if(!isNaN(nQuery) && sQuery ===  '' + nQuery) {
+					this._oGlobalFilter = new Filter([
+						new Filter("SupplierID", FilterOperator.EQ, sQuery)
+					], false);
+				} else {
+					this._oGlobalFilter = new Filter([
+						new Filter("CompanyName", FilterOperator.Contains, sQuery),
+						new Filter("ContactName", FilterOperator.Contains, sQuery),
+					], false);
+				}				
 			}
 			this._filter();
 		},
@@ -44,7 +51,7 @@ sap.ui.define([
 				oTable.filter(aColumns[i], null);
 			}
 		},
-		onCellClicked: function(oEvent) {
+		onGoToSupplierDetails: function(oEvent) {
 			let oRow = oEvent.getParameter("row");
 			let oSupplier = oRow.getBindingContext().getObject();
 			this.oRouter.navTo("RouteSupplierDetails", {
