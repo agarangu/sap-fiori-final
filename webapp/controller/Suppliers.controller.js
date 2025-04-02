@@ -13,6 +13,7 @@ sap.ui.define([
 				globalFilter: ""
 			}), "ui");
 			this._oGlobalFilter = null;
+			this.oRouter = this.getOwnerComponent().getRouter();
         },
         _filter: function() {
 			let oFilter = null;
@@ -43,6 +44,13 @@ sap.ui.define([
 				oTable.filter(aColumns[i], null);
 			}
 		},
+		onCellClicked: function(oEvent) {
+			let oRow = oEvent.getParameter("row");
+			let oSupplier = oRow.getBindingContext().getObject();
+			this.oRouter.navTo("RouteSupplierDetails", {
+				SupplierID: oSupplier.SupplierID
+			})
+		}
         
     });
 });

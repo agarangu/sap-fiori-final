@@ -1,0 +1,117 @@
+<c:FragmentDefinition
+    xmlns="sap.ui.table"
+    xmlns:c="sap.ui.core"
+    xmlns:m="sap.m"
+>
+    <Table
+        id="productsTable"
+        selectionMode="None"
+        rows="{Products}"
+        rowMode="Auto"
+        rowActionCount="1"
+    >
+        <extension>
+            <m:OverflowToolbar>
+                <m:Title
+                    id="productsTableTitle"
+                    text="Products"
+                />
+                <m:ToolbarSpacer />
+                <m:Button
+                    icon="sap-icon://clear-filter"
+                    tooltip="{i18n>clearFiltersTooltip}"
+                    press="clearAllFilters"
+                />
+                <m:ToolbarSeparator />
+                <m:SearchField
+                    placeholder="{i18n>filterPlaceholder}"
+                    value="{ui>/globalFilter}"
+                    search="filterGlobally"
+                    width="15rem"
+                />
+            </m:OverflowToolbar>
+        </extension>
+        <rowActionTemplate>
+            <RowAction>
+                <RowActionItem
+                    type="Navigation"
+                    press="onCellClicked"
+                />
+            </RowAction>
+        </rowActionTemplate>
+        <columns>
+            <Column filterProperty="ProductID">
+                <m:Label text="{i18n>ProductID}" />
+                <template>
+                    <m:Text
+                        text="{ProductID}"
+                        wrapping="false"
+                    />
+                </template>
+            </Column>
+            <Column filterProperty="ProductName">
+                <m:Label text="{i18n>ProductName}" />
+                <template>
+                    <m:Text
+                        text="{ProductName}"
+                        wrapping="false"
+                    />
+                </template>
+            </Column>
+            <Column filterProperty="QuantityPerUnit">
+                <m:Label text="{i18n>QuantityPerUnit}" />
+                <template>
+                    <m:Text
+                        text="{QuantityPerUnit}"
+                        wrapping="false"
+                    />
+                </template>
+            </Column>
+            <Column filterProperty="UnitPrice">
+                <m:Label text="{i18n>UnitPrice}" />
+                <template>
+                    <m:Text
+                        text="{UnitPrice}"
+                        wrapping="false"
+                    />
+                </template>
+            </Column>
+            <Column filterProperty="UnitsInStock">
+                <m:Label text="{i18n>UnitsInStock}" />
+                <template>
+                    <m:Text
+                        text="{UnitsInStock}"
+                        wrapping="false"
+                    />
+                </template>
+            </Column>
+            <Column filterProperty="UnitsOnOrder">
+                <m:Label text="{i18n>UnitsOnOrder}" />
+                <template>
+                    <m:Text
+                        text="{UnitsOnOrder}"
+                        wrapping="false"
+                    />
+                </template>
+            </Column>
+            <Column filterProperty="ReorderLevel">
+                <m:Label text="{i18n>ReorderLevel}" />
+                <template>
+                    <m:Text
+                        text="{ReorderLevel}"
+                        wrapping="false"
+                    />
+                </template>
+            </Column>
+            <Column filterProperty="Discontinued">
+                <m:Label text="{i18n>Discontinued}" />
+                <template>
+                    <m:Text
+                        text="{Discontinued}"
+                        wrapping="false"
+                    />
+                </template>
+            </Column>
+        </columns>
+    </Table>
+</c:FragmentDefinition>

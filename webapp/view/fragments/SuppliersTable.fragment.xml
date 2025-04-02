@@ -9,6 +9,7 @@
         selectionMode="None"
         rows="{/Suppliers}"
         rowMode="Auto"
+        rowActionCount="1"
     >
         <extension>
             <m:OverflowToolbar >
@@ -26,6 +27,11 @@
                     width="15rem"/>
             </m:OverflowToolbar>
         </extension>
+        <rowActionTemplate>
+            <RowAction>
+                <RowActionItem type="Navigation" press="onCellClicked" />
+            </RowAction>
+        </rowActionTemplate>
         <columns>
             <Column
                 filterProperty="SupplierID"

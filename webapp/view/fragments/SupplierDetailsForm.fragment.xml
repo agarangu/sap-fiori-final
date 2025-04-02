@@ -1,0 +1,40 @@
+<c:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:c="sap.ui.core">
+	<VBox class="sapUiSmallMargin">
+		<f:SimpleForm id="supplierDetailsForm"
+			editable="false"
+			layout="ResponsiveGridLayout"
+			title="Address"
+			labelSpanXL="3"
+			labelSpanL="3"
+			labelSpanM="3"
+			labelSpanS="12"
+			adjustLabelSpan="false"
+			emptySpanXL="4"
+			emptySpanL="4"
+			emptySpanM="4"
+			emptySpanS="0"
+			columnsXL="1"
+			columnsL="1"
+			columnsM="1"
+			singleContainerFullSize="false" >
+			<f:content>
+				<Label text="{i18n>SupplierID}" /><Text text="{SupplierID}" />
+				<Label text="{i18n>CompanyName}" /><Text text="{CompanyName}" />
+				<Label text="{i18n>ContactName}" /><Text text="{ContactName}" />
+				<Label text="{i18n>ContactTitle}" /><Text text="{ContactTitle}" />
+				<Label text="{i18n>Address}" /><Text text="{Address}" />
+				<Label text="{i18n>City}" /><Text text="{City}" />
+				<Label text="{i18n>Region}" /><Text text="{Region}" />
+				<Label text="{i18n>PostalCode}" /><Text text="{PostalCode}" />
+				<Label text="{i18n>Country}" /><Text text="{Country}" />
+				<Label text="{i18n>Phone}" /><Text text="{Phone}" />
+				<Label text="{i18n>Fax}" /><Text text="{Fax}" />
+				<Label text="{i18n>HomePage}" /><Text text="{HomePage}" />
+			</f:content>
+		</f:SimpleForm>
+	</VBox>
+</c:FragmentDefinition>

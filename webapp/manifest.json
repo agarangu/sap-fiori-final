@@ -91,16 +91,29 @@
       "routes": [
         {
           "name": "RouteSuppliers",
-          "pattern": ":?query:",
+          "pattern": "",
           "target": [
             "TargetSuppliers"
+          ]
+        },
+        {
+          "name": "RouteSupplierDetails",
+          "pattern": "SupplierDetails/{SupplierID}",
+          "target": [
+            "TargetSupplierDetails"
           ]
         }
       ],
       "targets": {
         "TargetSuppliers": {
           "id": "Suppliers",
-          "name": "Suppliers"
+          "name": "Suppliers",
+          "level": 1
+        },
+        "TargetSupplierDetails": {
+          "id": "SupplierDetails",
+          "name": "SupplierDetails",
+          "level": 2
         }
       }
     },
