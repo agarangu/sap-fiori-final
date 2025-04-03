@@ -24,20 +24,44 @@
                     columnsXL="2"
                 >
                     <f:content>
-                        <Label text="{i18n>ProductName}" />
+                        <Label
+                            text="{i18n>ProductName}"
+                            required="true"
+                        />
                         <Input value="{newProductModel>/ProductName}" />
                         <Label text="{i18n>QuantityPerUnit}" />
-                        <Input value="{newProductModel>/QuantityPerUnit}" type="Number" />
+                        <Input
+                            value="{newProductModel>/QuantityPerUnit}"
+                            type="Number"
+                        />
                         <Label text="{i18n>UnitPrice}" />
-                        <Input value="{newProductModel>/UnitPrice}" type="Number" />
+                        <Input
+                            value="{newProductModel>/UnitPrice}"
+                            type="Number"
+                        />
                         <Label text="{i18n>UnitsInStock}" />
-                        <Input value="{newProductModel>/UnitsInStock}" type="Number" />
+                        <Input
+                            value="{newProductModel>/UnitsInStock}"
+                            type="Number"
+                        />
                         <Label text="{i18n>UnitsOnOrder}" />
-                        <Input value="{newProductModel>/UnitsOnOrder}" type="Number" />
+                        <Input
+                            value="{newProductModel>/UnitsOnOrder}"
+                            type="Number"
+                        />
                         <Label text="{i18n>ReorderLevel}" />
-                        <Input value="{newProductModel>/ReorderLevel}" type="Number" />
-                        <Label text="{i18n>Discontinued}" />
-                        <Select forceSelection="false" selectedKey="{newProductModel>/Discontinued}">
+                        <Input
+                            value="{newProductModel>/ReorderLevel}"
+                            type="Number"
+                        />
+                        <Label
+                            text="{i18n>Discontinued}"
+                            required="true"
+                        />
+                        <Select
+                            forceSelection="false"
+                            selectedKey="{newProductModel>/Discontinued}"
+                        >
                             <items>
                                 <c:Item
                                     text="{i18n>trueText}"
@@ -49,10 +73,12 @@
                                 />
                             </items>
                         </Select>
-                        <Label text="{i18n>CategoryName}" />
+                        <Label
+                            text="{i18n>CategoryName}"
+                        />
                         <Select
                             forceSelection="false"
-                             selectedKey="{newProductModel>/CategoryID}"
+                            selectedKey="{newProductModel>/CategoryID}"
                             items="{
                                 path: '/Categories',
                                 sorter: { path: 'CategoryName' }

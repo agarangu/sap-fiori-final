@@ -4,7 +4,8 @@ sap.ui.define([
     "sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
     "sap/ui/core/Messaging",
-], (Controller,JSONModel,Filter,FilterOperator,Messaging) => {
+    "sap/m/MessageToast"
+], (Controller,JSONModel,Filter,FilterOperator,Messaging,MessageToast) => {
     "use strict";
 
     return Controller.extend("com.agarangu.supplierssapfiori.controller.SupplierDetails", {
@@ -13,8 +14,7 @@ sap.ui.define([
             let oRoute = oRouter.getRoute("RouteSupplierDetails");
 			oRoute.attachPatternMatched(this._onObjectMatched, this);
 
-            const oModel = new JSONModel([]);
-            
+            const oModel = new JSONModel([]);           
             this.getView().setModel(oModel, "productsModel");
             this.clearNewProduct();
             
@@ -90,12 +90,18 @@ sap.ui.define([
         onSave: function() {
             let oView = this.getView();
             const oNewProduct = oView.getModel("newProductModel").getData();
+            const bIsEmptyProductName = oNewProduct.ProductName === null || oNewProduct.ProductName === "";
+            const bIsEmptyDiscontinued = oNewProduct.Discontinued === null || oNewProduct.Discontinued === "";
+            if(bIsEmptyProductName || bIsEmptyDiscontinued) {
+                const sMissingFieldMessage = this.getView().getModel("i18n").getResourceBundle().getText("missingFieldMessage");
+                MessageToast.show(sMissingFieldMessage);
+                return;
+            }
             let oProducts = oView.getModel("productsModel").getData();
             oProducts.push(oNewProduct);
             oView.setModel(new JSONModel(oProducts), "productsModel")
             this.clearNewProduct();
             this.oDialog.close();
-            console.log(oProducts);
         }
     });
 });

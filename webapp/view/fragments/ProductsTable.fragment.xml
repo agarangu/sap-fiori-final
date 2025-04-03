@@ -3,7 +3,6 @@
     xmlns:c="sap.ui.core"
     xmlns:m="sap.m"
     xmlns:mode="sap.ui.table.rowmodes"
-	xmlns:u="sap.ui.unified"
 >
     <Table
         id="productsTable"
@@ -12,7 +11,7 @@
         rowActionCount="1"
     >
         <rowMode>
-            <mode:Fixed rowCount="5" />
+            <mode:Fixed rowCount="10" />
         </rowMode>
         <extension>
             <m:OverflowToolbar>
@@ -22,14 +21,10 @@
                 />
                 <m:ToolbarSpacer />
                 <m:Button
-                    icon="sap-icon://clear-filter"
-                    tooltip="{i18n>clearFiltersTooltip}"
-                    press="clearAllFilters"
-                />
-                <m:Button
                     icon="sap-icon://add-product"
                     tooltip="{i18n>createProductTooltip}"
                     press="onCreatePopoverDialog"
+                    type="Accept"
                 />
             </m:OverflowToolbar>
         </extension>
