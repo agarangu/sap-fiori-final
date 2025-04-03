@@ -2,14 +2,18 @@
     xmlns="sap.ui.table"
     xmlns:c="sap.ui.core"
     xmlns:m="sap.m"
+    xmlns:mode="sap.ui.table.rowmodes"
+	xmlns:u="sap.ui.unified"
 >
     <Table
         id="productsTable"
         selectionMode="None"
         rows="{Products}"
-        rowMode="Auto"
         rowActionCount="1"
     >
+        <rowMode>
+            <mode:Fixed rowCount="5" />
+        </rowMode>
         <extension>
             <m:OverflowToolbar>
                 <m:Title
@@ -38,11 +42,7 @@
             </RowAction>
         </rowActionTemplate>
         <columns>
-            <Column
-                filterProperty="ProductID"
-                filterType="sap.ui.model.type.Integer"
-                width="4rem"
-            >
+            <Column width="4rem">
                 <m:Label text="{i18n>ProductID}" />
                 <template>
                     <m:Text
@@ -51,7 +51,7 @@
                     />
                 </template>
             </Column>
-            <Column filterProperty="ProductName">
+            <Column>
                 <m:Label text="{i18n>ProductName}" />
                 <template>
                     <m:Text
@@ -60,22 +60,16 @@
                     />
                 </template>
             </Column>
-            <Column
-                filterProperty="UnitPrice"
-                filterType="sap.ui.model.type.Integer"
-            >
+            <Column hAlign="Center">
                 <m:Label text="{i18n>UnitPrice}" />
                 <template>
                     <m:Text
-                        text="{UnitPrice}"
+                        text="$ {UnitPrice}"
                         wrapping="false"
                     />
                 </template>
             </Column>
-            <Column
-                filterProperty="UnitsInStock"
-                filterType="sap.ui.model.type.Integer"
-            >
+            <Column hAlign="End">
                 <m:Label text="{i18n>UnitsInStock}" />
                 <template>
                     <m:Text
@@ -84,10 +78,7 @@
                     />
                 </template>
             </Column>
-            <Column
-                filterProperty="UnitsOnOrder"
-                filterType="sap.ui.model.type.Integer"
-            >
+            <Column hAlign="End">
                 <m:Label text="{i18n>UnitsOnOrder}" />
                 <template>
                     <m:Text

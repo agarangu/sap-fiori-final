@@ -8,60 +8,81 @@
         id="createProductDialog"
         title="{i18n>ProductDialogTitle}"
         contentWidth="40vw"
-		contentHeight="40vh"
+        contentHeight="40vh"
     >
         <content>
-            <VBox class="sapUiSmallMargin" id="createProductFormContainer" >
+            <VBox
+                class="sapUiSmallMargin"
+                id="createProductFormContainer"
+            >
                 <f:SimpleForm
                     id="createProductDetailsForm"
                     editable="true"
-					layout="ColumnLayout"
-					columnsM="2"
-					columnsL="2"
-					columnsXL="2"
+                    layout="ColumnLayout"
+                    columnsM="2"
+                    columnsL="2"
+                    columnsXL="2"
                 >
                     <f:content>
-                        <Label text="{i18n>ProductID}" />
-                        <Input value="{ProductID}" />
                         <Label text="{i18n>ProductName}" />
-                        <Input value="{ProductName}" />
+                        <Input value="{newProductModel>/ProductName}" />
                         <Label text="{i18n>QuantityPerUnit}" />
-                        <Input value="{QuantityPerUnit}" />
+                        <Input value="{newProductModel>/QuantityPerUnit}" type="Number" />
                         <Label text="{i18n>UnitPrice}" />
-                        <Input value="{UnitPrice}" />
+                        <Input value="{newProductModel>/UnitPrice}" type="Number" />
                         <Label text="{i18n>UnitsInStock}" />
-                        <Input value="{UnitsInStock}" />
+                        <Input value="{newProductModel>/UnitsInStock}" type="Number" />
                         <Label text="{i18n>UnitsOnOrder}" />
-                        <Input value="{UnitsOnOrder}" />
+                        <Input value="{newProductModel>/UnitsOnOrder}" type="Number" />
                         <Label text="{i18n>ReorderLevel}" />
-                        <Input value="{ReorderLevel}" />
+                        <Input value="{newProductModel>/ReorderLevel}" type="Number" />
                         <Label text="{i18n>Discontinued}" />
-                        <Input value="{Discontinued}" />
+                        <Select forceSelection="false" selectedKey="{newProductModel>/Discontinued}">
+                            <items>
+                                <c:Item
+                                    text="{i18n>trueText}"
+                                    key="true"
+                                />
+                                <c:Item
+                                    text="{i18n>falseText}"
+                                    key="false"
+                                />
+                            </items>
+                        </Select>
                         <Label text="{i18n>CategoryName}" />
                         <Select
                             forceSelection="false"
+                             selectedKey="{newProductModel>/CategoryID}"
                             items="{
                                 path: '/Categories',
                                 sorter: { path: 'CategoryName' }
-                            }">
-                            <c:Item key="{CategoryID}" text="{CategoryName}" />
+                            }"
+                        >
+                            <c:Item
+                                key="{CategoryID}"
+                                text="{CategoryName}"
+                            />
                         </Select>
                     </f:content>
                 </f:SimpleForm>
             </VBox>
         </content>
         <footer>
-			<Toolbar>
-				<content>
-					<ToolbarSpacer />
-					<Button type="Accept"
+            <Toolbar>
+                <content>
+                    <ToolbarSpacer />
+                    <Button
+                        type="Accept"
                         text="{i18n>DialogSaveButton}"
-                        press="._closeDialog" />
-                    <Button type="Default"
+                        press="onSave"
+                    />
+                    <Button
+                        type="Default"
                         text="{i18n>DialogCloseButton}"
-                        press="._closeDialog" />
-				</content>
-			</Toolbar>
-		</footer>
+                        press="._closeDialog"
+                    />
+                </content>
+            </Toolbar>
+        </footer>
     </Dialog>
 </c:FragmentDefinition>

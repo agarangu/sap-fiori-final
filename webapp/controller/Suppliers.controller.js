@@ -27,7 +27,7 @@ sap.ui.define([
 			this._oGlobalFilter = null;
 			if (sQuery) {
 				const nQuery = parseInt(sQuery);
-				if(!isNaN(nQuery) && sQuery ===  '' + nQuery) {
+				if(!isNaN(nQuery) && sQuery ===  '' + nQuery && Number.isInteger(nQuery)) {
 					this._oGlobalFilter = new Filter([
 						new Filter("SupplierID", FilterOperator.EQ, sQuery)
 					], false);

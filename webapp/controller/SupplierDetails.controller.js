@@ -13,12 +13,15 @@ sap.ui.define([
             let oRoute = oRouter.getRoute("RouteSupplierDetails");
 			oRoute.attachPatternMatched(this._onObjectMatched, this);
 
-            const oModel = new JSONModel({"InputValue": ""});
-            this.getView().setModel(oModel, "UserInput");
+            const oModel = new JSONModel([]);
+            
+            this.getView().setModel(oModel, "productsModel");
+            this.clearNewProduct();
             
             this._oMessageManager = Messaging;
 			this._oMessageManager.removeAllMessages();
         },
+
         _onObjectMatched: function (oEvent) {
             this.sSupplierID = oEvent.getParameter("arguments").SupplierID;
             this.getView().bindElement({
@@ -28,11 +31,18 @@ sap.ui.define([
                 }
             });
         },
-        onCellCLickTest: function(oEvent) {
-            let oProduct = oEvent.getParameter("rowBindingContext").getObject();
-			// let oProduct = oRow.getBindingContext().getObject();
-            let oCategory = oProduct.Category;
-            console.log(oCategory);
+        clearNewProduct: function() {
+            const oModel = new JSONModel({
+                "ProductName": null,
+                "CategoryID": null,
+                "QuantityPerUnit": null,
+                "UnitPrice": null,
+                "UnitsInStock": null,
+                "UnitsOnOrder": null,
+                "ReorderLevel": null,
+                "Discontinued": null
+            });
+            this.getView().setModel(oModel, "newProductModel");
         },
         onOpenPopoverDialog: function (oEvent) {
 			// create dialog lazily
@@ -61,9 +71,7 @@ sap.ui.define([
 			}
 			this.oCreateProductDialog.then(function (oDialog) {
 				this.oDialog = oDialog;
-                // this.oDialog.bindElement({
-                //     "path": "/Products(" + oProducts.ProductID + ")",
-                // });
+                this.oDialog.setModel(this.getView().getModel("newProductModel"), "newProductModel");
 				this.oDialog.open();
 				this._oMessageManager.registerObject(this.oView.byId("createProductFormContainer"), true);
 
@@ -78,6 +86,16 @@ sap.ui.define([
 		},
         _closeDialog: function () {
 			this.oDialog.close();
-		}
+		},
+        onSave: function() {
+            let oView = this.getView();
+            const oNewProduct = oView.getModel("newProductModel").getData();
+            let oProducts = oView.getModel("productsModel").getData();
+            oProducts.push(oNewProduct);
+            oView.setModel(new JSONModel(oProducts), "productsModel")
+            this.clearNewProduct();
+            this.oDialog.close();
+            console.log(oProducts);
+        }
     });
 });
